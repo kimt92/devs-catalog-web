@@ -4,6 +4,7 @@ import { ProduitsComponent } from './produits/produits.component';
 import { ProduitsViewsComponent } from './produits-views/produits-views.component';
 import { ProduitsEditsComponent } from './produits-edits/produits-edits.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { CategoriesAddComponent } from './categories-add/categories-add.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,9 @@ const routes: Routes = [
   { 
     path: 'categorysList', 
     component: CategoriesComponent 
+  }, { 
+    path: 'categorysAdd', 
+    component: CategoriesAddComponent 
   },
   { 
     path: 'categoryDetail', 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl,NgForm,FormGroup } from '@angular/forms';
+import { Category } from '../models/category';
+import { CategoriesService } from '../services/categories.service';
 
 @Component({
   selector: 'app-categories-add',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriesAddComponent implements OnInit {
 
-  constructor() { }
+  constructor(private catService: CategoriesService) { }
 
   ngOnInit(): void {
+  }
+  onSubmit(form: NgForm) {
+    this.catService.addCategory(form)
+      .subscribe(res => {
+      console.log('cool');
+        }, (err) => {
+          console.log(err);
+
+        });
+
+      console.log(form);
   }
 
 }

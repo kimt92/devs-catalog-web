@@ -21,7 +21,7 @@ export class ProduitsService {
     return this.http.get<Produits[]>(this.api_url)
       .pipe(
         tap(heroes => console.log('fetched produit')),
-        catchError(this.handleError('getUtilisateurs', []))
+        catchError(this.handleError('getProduits', []))
       );
   }
 

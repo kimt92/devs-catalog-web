@@ -11,13 +11,12 @@ const httpOptions = {
   })
 };
 
-
-const apiUrl = 'http://localhost:8000/api/category/saveCat';
-
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriesService {
+   apiUrl = 'https://devs-catalog.herokuapp.com/categories';
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // log to console instead
@@ -27,10 +26,20 @@ export class CategoriesService {
   constructor(private http: HttpClient) { }
 
   getCategorys(): Observable<Category[]> {
-    return this.http.get<Category[]>(apiUrl)
+    return this.http.get<Category[]>(this.apiUrl)
       .pipe(
-        tap(heroes => console.log('fetched Userss')),
-        catchError(this.handleError('getUserss', []))
+        tap(heroes => console.log('category')),
+        catchError(this.handleError('getCatecory', []))
       );
+  }
+
+
+  addCategory(User ): Observable<Category> {
+    console.log(User);
+    return this.http.post<Category>(this.apiUrl, User, httpOptions).pipe(
+      // tslint:disable-next-line:no-shadowed-variable
+      tap((Category: Category) => console.log(`added Category w/ id=${Category.id}`)),
+      catchError(this.handleError<Category>('addUtilisateur'))
+    );
   }
 }
