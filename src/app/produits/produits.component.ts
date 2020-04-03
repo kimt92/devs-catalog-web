@@ -19,7 +19,7 @@ export class ProduitsComponent implements OnInit {
   ngOnInit() {
     this.produit.getProduits()
       .subscribe(res =>{
-        this.produits=res
+        this.produits=res._embedded.products;
         console.log( "produits :",this.produits)
       })
   }

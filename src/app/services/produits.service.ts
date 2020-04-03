@@ -8,7 +8,7 @@ import { Produits } from '../models/produits';
   providedIn: 'root'
 })
 export class ProduitsService {
-  api_url="http://localhost:8000/api/produits/saveProd"
+  api_url="https://devs-catalog.herokuapp.com/products"
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // console.error(error); // log to console instead
