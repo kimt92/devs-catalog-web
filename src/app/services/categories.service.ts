@@ -34,9 +34,9 @@ export class CategoriesService {
   }
 
 
-  addCategory(User ): Observable<Category> {
-    console.log(User);
-    return this.http.post<Category>(this.apiUrl, User, httpOptions).pipe(
+  addCategory(cats ): Observable<Category> {
+    console.log(cats);
+    return this.http.post<Category>(this.apiUrl, cats, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((Category: Category) => console.log(`added Category w/ id=${Category.id}`)),
       catchError(this.handleError<Category>('addUtilisateur'))

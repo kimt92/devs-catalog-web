@@ -2,7 +2,7 @@ export class Produits {
     id:string;
     name:string;
     image:string;
-    prix:string;
-    quantite:string;
-
+    price:string;
+    quantity:string;
+    category:string;
 }

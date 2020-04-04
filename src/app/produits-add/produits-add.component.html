@@ -1,1 +1,24 @@
 <p>produits-add works!</p>
+<div>
+    
+    <form (ngSubmit)="onSubmit(f.value)" #f="ngForm" >
+        <p>
+            <label for="nom">nom</label>
+            <input type="text" id="nom" name="name" required minlength="4" ngModel>
+        </p>
+        <p> 
+            <label for="prix">prix</label>
+            <input type="number" id="prix" name="price" ngModel>
+        </p>
+        <p> 
+            <label for="quantite">quantite</label>
+            <input type="number" id="quantite" name="quantity" ngModel>
+        </p>
+        <p>
+            <select name="category" id="category" >
+                <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+            </select>
+        </p> 
+            <p><input type="submit"> Enregistrer</p>
+    </form >
+</div>

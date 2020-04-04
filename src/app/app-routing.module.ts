@@ -5,37 +5,16 @@ import { ProduitsViewsComponent } from './produits-views/produits-views.componen
 import { ProduitsEditsComponent } from './produits-edits/produits-edits.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoriesAddComponent } from './categories-add/categories-add.component';
+import { ProduitsAddComponent } from './produits-add/produits-add.component';
 
 
 const routes: Routes = [
-  { 
-    path: 'produitsList', 
-    component: ProduitsComponent 
-  },
-  { 
-    path: 'produitDetail', 
-    component: ProduitsViewsComponent 
-  },
-  { 
-    path: 'produitEdit', 
-    component: ProduitsEditsComponent 
-  },
-  
-  { 
-    path: 'categorysList', 
-    component: CategoriesComponent 
-  }, { 
-    path: 'categorysAdd', 
-    component: CategoriesAddComponent 
-  },
-  { 
-    path: 'categoryDetail', 
-    component: ProduitsViewsComponent 
-  },
-  { 
-    path: 'categoryEdit', 
-    component: ProduitsEditsComponent 
-  }
+  // produit
+  { path: 'produits/list', component: ProduitsComponent  },
+  { path: 'produit/add', component: ProduitsAddComponent },
+  // category
+  { path: 'categories/list', component: CategoriesComponent },
+  { path: 'category/add', component: CategoriesAddComponent },
   
 ];
 

@@ -2,21 +2,20 @@
 
 <div>
     
-    <form (ngSubmit)="onSubmit(f.value)" #f= "ngForm" >
+    <form (ngSubmit)="onSubmit(f.value)" #f="ngForm" >
         <p>
             <label for="nom">nom</label>
-            <input type="text" id="nom" name="name" ngModel>
+            <input type="text" id="nom" name="name" required minlength="4" ngModel>
         </p>
         <p> 
             <label for="prenoms">description</label>
             <input type="text" id="description" name="description" ngModel>
         </p>
-        <p> 
+        <!-- <p> 
             <label for="image">image</label>
             <input type="file" id="image" name="image" ngModel>
         </p>
-       
-    
-            <p><input type="submit"> Enregistrer</p>
+        -->
+            <input type="submit" value="enregister"> 
     </form >
 </div>
