@@ -32,12 +32,35 @@ export class ProduitsService {
         catchError(this.handleError('getProduits', []))
       );
   }
+  getProduit(id: number): Observable<Produits> {
+    console.log( 'Produits id', id);
+    const url = `${this.api_url}${id}`;
+    console.log( 'Produits', url);
+    return this.http.get<Produits>(url).pipe(
+      tap(_ => console.log(`fetched Produits id=${id}`)),
+      catchError(this.handleError<Produits>(`getProduits id=${id}`))
+    );
+  }
   addProduit(data ): Observable<Produits> {
     console.log(data);
     return this.http.post<Produits>(this.api_url, data, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((Produits: Produits) => console.log(`added Produit w/ id=${Produits.id}`)),
       catchError(this.handleError<Produits>('addProduit'))
+    );
+  }
+  updateCategory(id): Observable<any> {
+    const url = `${this.api_url}/${id}`;
+    return this.http.put(url, Produits, httpOptions).pipe(
+      tap(_ => console.log(`updated Utilisateur id=${id}`)),
+      catchError(this.handleError<any>('updateProduits'))
+    );
+  }
+  deleteProduits(id): Observable<Produits> {
+    const url = `${this.api_url}${id}`;
+    return this.http.delete<Produits>(url, httpOptions).pipe(
+      tap(_ => console.log(`deleted Produits id=${id}`)),
+      catchError(this.handleError<Produits>('deleteProduits'))
     );
   }
 
