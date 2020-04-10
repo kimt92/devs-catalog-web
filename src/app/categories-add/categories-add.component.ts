@@ -17,11 +17,11 @@ export class CategoriesAddComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.catService.addCategory(form)
       .subscribe(res => {
-      console.log('cool');
+      console.log('cool',res);
         }, (err) => {
           console.log(err);
 
-        });
+        }); 
 
       console.log(form);
   }

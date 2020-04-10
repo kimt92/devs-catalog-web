@@ -34,14 +34,14 @@ export class ProduitsService {
   }
   getProduit(id: number): Observable<Produits> {
     console.log( 'Produits id', id);
-    const url = `${this.api_url}${id}`;
+    const url = `${this.api_url}/${id}`;
     console.log( 'Produits', url);
     return this.http.get<Produits>(url).pipe(
       tap(_ => console.log(`fetched Produits id=${id}`)),
       catchError(this.handleError<Produits>(`getProduits id=${id}`))
     );
   }
-  addProduit(data ): Observable<Produits> {
+  addProduit(data): Observable<Produits> {
     console.log(data);
     return this.http.post<Produits>(this.api_url, data, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
@@ -57,7 +57,7 @@ export class ProduitsService {
     );
   }
   deleteProduits(id): Observable<Produits> {
-    const url = `${this.api_url}${id}`;
+    const url = `${this.api_url}/${id}`;
     return this.http.delete<Produits>(url, httpOptions).pipe(
       tap(_ => console.log(`deleted Produits id=${id}`)),
       catchError(this.handleError<Produits>('deleteProduits'))

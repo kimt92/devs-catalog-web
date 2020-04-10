@@ -34,7 +34,7 @@ export class CategoriesService {
   }
   getCategory(id: number): Observable<Category> {
     console.log( 'Category id', id);
-    const url = `${this.apiUrl}${id}`;
+    const url = `${this.apiUrl}/${id}`;
     console.log( 'Category', url);
     return this.http.get<Category>(url).pipe(
       tap(_ => console.log(`fetched Category id=${id}`)),
@@ -42,10 +42,9 @@ export class CategoriesService {
     );
   }
 
-  addCategory(cats ): Observable<Category> {
-    console.log(cats);
-    return this.http.post<Category>(this.apiUrl, cats, httpOptions).pipe(
-      // tslint:disable-next-line:no-shadowed-variable
+  addCategory(data ): Observable<Category> {
+    console.log(data);
+    return this.http.post<Category>(this.apiUrl, data, httpOptions).pipe(
       tap((Category: Category) => console.log(`added Category w/ id=${Category.id}`)),
       catchError(this.handleError<Category>('addUtilisateur'))
     );
@@ -58,7 +57,7 @@ export class CategoriesService {
     );
   }
   deleteCategory(id): Observable<Category> {
-    const url = `${this.apiUrl}${id}`;
+    const url = `${this.apiUrl}/${id}`;
     return this.http.delete<Category>(url, httpOptions).pipe(
       tap(_ => console.log(`deleted Category id=${id}`)),
       catchError(this.handleError<Category>('deleteCategory'))

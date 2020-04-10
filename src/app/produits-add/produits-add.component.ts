@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl,NgForm,FormGroup } from '@angular/forms';
+import { FormControl,NgForm,FormGroup ,FormBuilder , Validators } from '@angular/forms';
 
 import { Produits } from '../models/produits';
 import { Category } from '../models/category';
@@ -14,30 +14,40 @@ import { CategoriesService } from '../services/categories.service';
 export class ProduitsAddComponent implements OnInit {
     categories:Category[]=[]
 
+    formData = this.fb.group({
+      name: ['',Validators.required],
+      price: ['',Validators.required],
+      quantity: ['',Validators.required]
+    })
+
   constructor(private categoryService: CategoriesService,
-              private produitService: ProduitsService        
+              private produitService: ProduitsService ,
+              private fb: FormBuilder       
       ) { }
 
   ngOnInit(): void {
     this.categoryService.getCategorys()
       .subscribe(response =>{
-        console.log('response Cat :',response )
+        console.log('response Cat :',response)
         this.categories = response._embedded.categories;
       })
   }
 
   onSubmit(form: NgForm) {
+
     this.produitService.addProduit(form)
     .subscribe(
       (res) => {
-      console.log("response onSubmit",res)
-      }, 
-      (err) => {
+        console.log("cool ok",res)
+      }, (err) => {
         console.log(err);
 
       });
 
-    // console.log(form);
+  }
+  testClick(){
+    console.log(this.formData.value)
+    
   }
 
 }

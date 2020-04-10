@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
 import { Router } from '@angular/router';
 import { Produits } from '../models/produits';
 import { Category } from '../models/category';
@@ -14,14 +13,31 @@ import { FormControl,NgForm,FormGroup } from '@angular/forms';
 })
 export class ProduitsComponent implements OnInit {
   produits:Produits[]=[]
-  constructor(private produit: ProduitsService) { }
+
+  constructor(private produitServics: ProduitsService) { }
 
   ngOnInit() {
-    this.produit.getProduits()
-      .subscribe(res =>{
-        this.produits=res._embedded.products;
-        console.log( "produits :",this.produits)
-      })
+    this.produitServics.getProduits()
+      .subscribe(
+        (res) =>{
+          this.produits = res._embedded.products;
+          console.log( "produits :",this.produits)
+        },(err)=>{
+          console.error(err);
+        }
+      );
+  }
+  
+  getProduitById(id: number) {
+    return this.produitServics.getProduit(id)
+      .subscribe(
+        (res)=>{
+          console.log("getProduitById",res);
+        },
+        (err)=>{
+          console.error(err);
+        }
+      )
   }
 
 }

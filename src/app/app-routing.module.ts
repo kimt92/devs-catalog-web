@@ -10,11 +10,13 @@ import { ProduitsAddComponent } from './produits-add/produits-add.component';
 
 const routes: Routes = [
   // produit
-  { path: 'produits/list', component: ProduitsComponent  },
-  { path: 'produit/add', component: ProduitsAddComponent },
+  { path: '', component: ProduitsAddComponent  },
+
+  { path: 'produits-list', component: ProduitsComponent  },
+  { path: 'produit-add', component: ProduitsAddComponent },
   // category
-  { path: 'categories/list', component: CategoriesComponent },
-  { path: 'category/add', component: CategoriesAddComponent },
+  { path: 'categories-list', component: CategoriesComponent },
+  { path: 'category-add', component: CategoriesAddComponent },
   
 ];
 

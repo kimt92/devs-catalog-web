@@ -1,5 +1,37 @@
-<p>produits works!</p>
-<h3>produits listes </h3>
-<div *ngFor="let produit of produits" >
-    <p>{{produit.name}} </p>
-</div>
+
+<div class="container">
+    <div class="blue-divider"></div>
+        <div class="heading">
+            <h2>Liste des produits </h2>
+            <a class="btn btn-outline-success"><i class="fa fa-plus"></i> ajouter un produit </a>
+        </div>
+        <br>
+        <div class="row" >
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>price</th>
+                  <th>quantity</th>
+                  <th>category</th>
+                  <th>actions possibles</th>
+                </tr>
+              </thead>
+              <tbody>
+              
+                  <tr *ngFor="let produit of produits">
+                    <td>{{ produit.name }}</td>
+                    <td>{{ produit.price }}</td>
+                    <td>{{ produit.quantity }}</td>
+                    <td>{{ produit.category }}</td>
+                    
+                    <td width="350">
+                      <a class="btn btn-outline-default" ><i class="fa fa-eye"></i>Details</a>
+                      <a class="btn btn-outline-primary" ><i class="fa fa-edit"></i>Modifier</a>
+                      <a class="btn btn-outline-danger" ><i class="fa fa-remove"></i>Supprimer</a>
+                    </td>
+                  </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
